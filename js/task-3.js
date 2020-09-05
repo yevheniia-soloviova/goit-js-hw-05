@@ -1,22 +1,40 @@
-function findLongestWord(string = "") {
+const findBestEmployee = function (employees) {
+  "use strict";
   // Write code under this line
-  let words = string.split(" ");
-  let longestWord = words[0];
-
-  for (const word of words) {
-    const isLongest = word.length > longestWord.length;
-    if (isLongest) {
-      longestWord = word;
+  const keys = Object.keys(employees);
+  let result = "";
+  let maxValue = 0;
+  for (const key of keys) {
+    if (employees[key] > maxValue) {
+      maxValue = employees[key];
+      result = key;
     }
   }
-  return longestWord;
-}
+  return result;
+};
 
-console.log(findLongestWord("The quick brown fox jumped over the lazy dog"));
-// 'jumped'
+// Объекты и ожидаемый результат
+const developers = {
+  ann: 29,
+  david: 35,
+  helen: 1,
+  lorence: 99,
+};
+console.log(findBestEmployee(developers));
+// 'lorence'
 
-console.log(findLongestWord("Google do a roll"));
-// 'Google'
+const supports = {
+  poly: 12,
+  mango: 17,
+  ajax: 4,
+};
+console.log(findBestEmployee(supports));
+// 'mango'
 
-console.log(findLongestWord("May the force be with you"));
-// 'force'
+const sellers = {
+  lux: 147,
+  david: 21,
+  kiwi: 19,
+  chelsy: 38,
+};
+console.log(findBestEmployee(sellers));
